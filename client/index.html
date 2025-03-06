@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidzora AI - Video Editing Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Logo Intro -->
+    <div class="intro" id="intro">
+        <div class="logo-container">
+            <svg class="logo" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#ffeb3b" stroke-width="5"/>
+                <path d="M 30 70 L 50 30 L 70 70" fill="none" stroke="#ff4081" stroke-width="5"/>
+            </svg>
+            <h1>Vidzora AI</h1>
+            <p class="tagline">AI-Powered Video Magic</p>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <h2>Login to Vidzora AI</h2>
+            <input type="email" id="emailInput" placeholder="Enter your email">
+            <button onclick="sendOTP()">Send OTP</button>
+            <input type="text" id="otpInput" placeholder="Enter OTP" style="display: none;">
+            <button onclick="verifyOTP()" style="display: none;" id="verifyBtn">Verify OTP</button>
+            <p id="loginStatus"></p>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard" id="dashboard" style="display: none;">
+        <header class="header">
+            <h1>Vidzora AI Dashboard</h1>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </header>
+        
+        <main class="main-content">
+            <div class="upload-section">
+                <input type="file" id="videoUpload" accept="video/*">
+                <div class="mode-toggle">
+                    <button id="manualMode" onclick="setMode('manual')">Manual Mode</button>
+                    <button id="autoMode" onclick="setMode('auto')">Auto Mode</button>
+                    <button id="stopAuto" onclick="stopAutoMode()" style="display: none;">Stop Auto</button>
+                </div>
+                <div class="language-section">
+                    <select id="sourceLanguage">
+                        <option value="en-US">English</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="es-ES">Spanish</option>
+                        <option value="fr-FR">French</option>
+                    </select>
+                    <span>→</span>
+                    <select id="targetLanguage" disabled>
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                    </select>
+                </div>
+                <p id="status" class="status">Status: Ready</p>
+                <div class="premium-ad" id="adSection">
+                    <p>Upgrade to Premium for Ad-Free Experience!</p>
+                    <button onclick="upgradeToPremium()">Go Premium</button>
+                </div>
+            </div>
+            
+            <div class="workspace">
+                <div class="video-player">
+                    <video id="video" controls>
+                        <track kind="captions" srcLang="en" label="English">
+                    </video>
+                    <div id="realTimeCaption" class="real-time-caption"></div>
+                </div>
+                
+                <div class="caption-editor">
+                    <button onclick="addCaption()" id="addCaptionBtn">Add Caption</button>
+                    <button onclick="saveSubtitles()" id="saveBtn">Save Subtitles</button>
+                    <div class="editing-tools">
+                        <select id="fontStyle">
+                            <option value="bold">Bold</option>
+                            <option value="minimal">Minimal</option>
+                            <option value="animated">Animated</option>
+                        </select>
+                        <input type="color" id="fontColor" value="#ffffff">
+                        <button onclick="trimVideo()">Trim Video</button>
+                        <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+                        <button onclick="enhanceVideo()">Enhance Video</button>
+                    </div>
+                    <div id="captionList"></div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Settings & More</h3>
+                    <a href="#" onclick="showHelp()">Help & Support</a>
+                    <a href="#" onclick="showLegal()">Legal & Privacy</a>
+                    <a href="#" onclick="showTeam()">Team & Credits</a>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank">Instagram</a>
+                        <a href="https://twitter.com" target="_blank">Twitter</a>
+                        <a href="https://youtube.com" target="_blank">YouTube</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
